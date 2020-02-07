@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.modelMapper.domain.Post;
+import com.spring.modelMapper.dto.PostDTO;
 import com.spring.modelMapper.service.PostService;
 
 @RestController
@@ -18,7 +19,7 @@ public class PostController {
 	PostService postService;
 	
 	@GetMapping
-	public List<Post> getPosts(){
+	public List<PostDTO> getPosts(){
 		return postService.getPosts();
 	}
 }
