@@ -29,7 +29,10 @@ public class PostController {
 	
 	@ResponseStatus(HttpStatus.CREATED)
 	@PostMapping
-	public void createPost(@RequestBody PostDTO postDTO) {
+	public void createPost(@RequestBody PostDTO postDTO) throws Exception {
+		if(postDTO.getTitle() == null) {
+			throw new Exception("Title is required");
+		}
 		postService.createPost(postDTO);
 	}
 	

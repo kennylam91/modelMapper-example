@@ -2,6 +2,10 @@ package com.spring.modelMapper.domain;
 
 import java.util.Date;
 
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.spring.modelMapper.config.ModelMapperFactory;
 import com.spring.modelMapper.dto.PostDTO;
 
 import lombok.AllArgsConstructor;
@@ -9,9 +13,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class Post {
+	
+	
 
 	private Long id;
 	
@@ -20,13 +26,11 @@ public class Post {
 	private String content;
 	
 	private Date createdTime;
+
 	
 	public PostDTO convertToDto() {
-		PostDTO postDTO = new PostDTO();
-		postDTO.setId(this.getId());
-		postDTO.setTitle(this.getTitle());
-		postDTO.setContent(this.getContent());
-		postDTO.setCreatedTime(this.getCreatedTime());
-		return postDTO;
+		return ModelMapperFactory.getModelMapper().map(this,PostDTO.class);
 	}
+
+	
 }
