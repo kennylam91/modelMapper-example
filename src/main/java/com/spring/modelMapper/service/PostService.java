@@ -9,7 +9,8 @@ public interface PostService {
 	
 	List<PostDTO> getPosts();
 	
-	
+	Long createPost(PostDTO postDTO);
+
 	
 
 }

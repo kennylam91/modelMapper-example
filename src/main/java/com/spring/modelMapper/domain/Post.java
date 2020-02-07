@@ -6,9 +6,11 @@ import com.spring.modelMapper.dto.PostDTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class Post {
 
 	private Long id;
@@ -19,12 +21,12 @@ public class Post {
 	
 	private Date createdTime;
 	
-	public PostDTO convertToDto(Post post) {
+	public PostDTO convertToDto() {
 		PostDTO postDTO = new PostDTO();
-		postDTO.setId(post.getId());
-		postDTO.setTitle(post.getTitle());
-		postDTO.setContent(post.getContent());
-		postDTO.setCreatedTime(post.getCreatedTime());
+		postDTO.setId(this.getId());
+		postDTO.setTitle(this.getTitle());
+		postDTO.setContent(this.getContent());
+		postDTO.setCreatedTime(this.getCreatedTime());
 		return postDTO;
 	}
 }
