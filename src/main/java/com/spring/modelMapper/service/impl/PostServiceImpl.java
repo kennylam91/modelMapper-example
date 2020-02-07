@@ -13,17 +13,26 @@ import com.spring.modelMapper.service.PostService;
 
 @Service
 public class PostServiceImpl implements PostService {
+	
+	private final List<PostDTO> postDTOList = new ArrayList<>();
 
-	@Override
-	public List<PostDTO> getPosts() {
-		List<PostDTO> postDTOs = new ArrayList<>();
+	private void initPostDTOList() {
 		Post post1 = new Post(1L,"Post 1","Content 1",null);
 		Calendar cal = Calendar.getInstance();
 		cal.set(1995, 5, 25, 04, 15, 20);
 		cal.setTimeZone(TimeZone.getTimeZone("GMT"));
 		post1.setCreatedTime(cal.getTime());
-		postDTOs.add(post1.convertToDto(post1));
-		return postDTOs;
+		postDTOList.add(post1.convertToDto(post1));
+	}
+	
+	public PostServiceImpl() {
+		initPostDTOList();
+	}
+
+
+	@Override
+	public List<PostDTO> getPosts() {
+		return postDTOList;
 	}
 
 
